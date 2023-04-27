@@ -11,7 +11,7 @@ namespace prog
       rgb_value green_;
       rgb_value blue_;
     public:
-      Color();
+      Color(); //(0,0,0) by default
       Color(const Color& c);
       Color(rgb_value r, rgb_value g, rgb_value b);
       rgb_value red() const;
