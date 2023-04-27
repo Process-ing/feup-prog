@@ -48,7 +48,9 @@ namespace prog {
                 save();
                 continue;
             } 
-            // TODO ...
+            if (command == "replace") {
+                continue;
+            }
 
         }
     }
