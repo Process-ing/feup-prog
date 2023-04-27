@@ -40,3 +40,4 @@ namespace prog {
       return blue_;
     }
 }
+
