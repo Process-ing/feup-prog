@@ -20,16 +20,14 @@ namespace prog {
         return 0;
     }
 
-    // TODO: remove this DUMMY variable once you have appropriate fields for representing colors.
-    rgb_value DUMMY_rgb_value = 0; 
 
     rgb_value& Color::red()  {
-        return DUMMY_rgb_value;
+        return red_;
     }
     rgb_value& Color::green()  {
-      return DUMMY_rgb_value;
+      return green_;
     }
     rgb_value& Color::blue()  {
-      return DUMMY_rgb_value;
+      return blue_;
     }
 }
