@@ -46,6 +46,14 @@ namespace prog
      * @author Bruno Oliveira
      */
     void v_mirror();
+
+    /**
+     * @brief Implements "crop" command.
+     * 
+     * @details The command "crop x y w h" crops the image to the rectangle
+     *          defined by top-left corner (x, y), width w and height h.
+     */
+    void crop();
   };
 }
 #endif
