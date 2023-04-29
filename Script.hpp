@@ -26,7 +26,7 @@ namespace prog
     void save();
 
     /**
-     * @brief Implement "replace" command.
+     * @brief Implements "replace" command.
      * @details The command "replace r1 g1 b1 r2 g2 b2" replaces all
      *          (r1, g1, b1) pixels by (r2, g2, b2).
      */
