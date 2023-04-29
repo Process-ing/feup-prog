@@ -24,6 +24,20 @@ namespace prog
     void open();
     void blank();
     void save();
+
+    /**
+     * @brief Implements "h_mirror" command.
+     * 
+     * @details The command "h_mirror" mirrors the image horizontally.
+     */
+    void h_mirror();
+
+    /**
+     * @brief Implements "v_mirror" command.
+     * 
+     * @details The command "v_mirror" mirrors the image vertically.
+     */
+    void v_mirror();
   };
 }
 #endif
