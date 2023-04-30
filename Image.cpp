@@ -5,11 +5,10 @@ namespace prog
   Image::Image(int w, int h, const Color &fill):
     width_(w), 
     height_(h), 
-    data_(h, std::vector<Color>(w, fill))
-    {}
-  Image::~Image()
-  {
-  }
+    data_(h, std::vector<Color>(w, fill)) {}
+
+  Image::~Image() {}
+  
   int Image::width() const
   {
     return width_;
