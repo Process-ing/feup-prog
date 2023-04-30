@@ -82,18 +82,28 @@ namespace prog {
     }
 
     void Script::h_mirror() {
-        for (int x = 0; x < image->width() / 2; x++) {
+        Image* new_image = new Image(image->width(), image->height());
+
+        for (int x = 0; x < image->width(); x++) {
             for (int y = 0; y < image->height(); y++) {
-                image->at(x, y) = image->at(image->width() - 1 - x, y);
+                new_image->at(x, y) = image->at(image->width() - 1 - x, y);
             }
         }
+
+        clear_image_if_any();
+        image = new_image;
     }
 
     void Script::v_mirror() {
+        Image* new_image = new Image(image->width(), image->height());
+
         for (int x = 0; x < image->width(); x++) {
-            for (int y = 0; y < image->height() / 2; y++) {
-                image->at(x, y) = image->at(x, image->height() - 1 - y);
+            for (int y = 0; y < image->height(); y++) {
+                new_image->at(x, y) = image->at(x, image->height() - 1 - y);
             }
         }
+
+        clear_image_if_any();
+        image = new_image;
     }
 }
