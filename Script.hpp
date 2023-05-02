@@ -29,6 +29,7 @@ namespace prog
      * @brief Implements "replace" command.
      * @details The command "replace r1 g1 b1 r2 g2 b2" replaces all
      *          (r1, g1, b1) pixels by (r2, g2, b2).
+     * @author Bruno Oliveira
      */
     void replace();
 
