@@ -208,21 +208,21 @@ namespace prog {
     }
     
     /**
-     * @brief Sorts a vector of rgb_value's and returns the median.
+     * @brief Sorts a rgb_value array and returns the median.
      * @author Bruno Oliveira
      * 
      * @param values Rgb_value array
+     * @param n Size of array
      * @return Median
      */
-    rgb_value median_sort(vector<rgb_value>& values) {
-        size_t size = values.size();
-        if (size == 0)
+    rgb_value median_sort(rgb_value values[], size_t n) {
+        if (n == 0)
             return 0;
 
-        sort(values.begin(), values.end());
-        if (size % 2 == 1)
-            return values[size / 2];
-        return ((int)values[size / 2 - 1] + (int)values[size / 2]) / 2;
+        sort(values, values + n);
+        if (n % 2 == 1)
+            return values[n / 2];
+        return ((int)values[n / 2 - 1] + (int)values[n / 2]) / 2;
     }
 
     /**
@@ -239,22 +239,28 @@ namespace prog {
      */
     Color square_median(Image* image, int x, int y, int ws) {
         int xmin = max(x - ws / 2, 0), xmax = min(x + ws / 2, image->width() - 1),
-            ymin = max(y - ws / 2, 0), ymax = min(y + ws / 2, image->height() - 1);
-        vector<rgb_value> reds, greens, blues;
+            ymin = max(y - ws / 2, 0), ymax = min(y + ws / 2, image->height() - 1),
+            arr_size = (xmax - xmin + 1) * (ymax - ymin + 1);
+        rgb_value *reds = new rgb_value[arr_size],
+            *greens = new rgb_value[arr_size],
+            *blues = new rgb_value[arr_size];
 
         Color color;
-        for (int nx = xmin; nx <= xmax; nx++) {
-            for (int ny = ymin; ny <= ymax; ny++) {
+        for (int nx = xmin, i = 0; nx <= xmax; nx++) {
+            for (int ny = ymin; ny <= ymax; ny++, i++) {
                 color = image->at(nx, ny);
-                reds.push_back(color.red());
-                greens.push_back(color.green());
-                blues.push_back(color.blue());
+                reds[i] = color.red();
+                greens[i] = color.green();
+                blues[i] = color.blue();
             }
         }
 
-        rgb_value median_red = median_sort(reds),
-            median_green = median_sort(greens),
-            median_blue = median_sort(blues);
+        rgb_value median_red = median_sort(reds, arr_size),
+            median_green = median_sort(greens, arr_size),
+            median_blue = median_sort(blues, arr_size);
+        delete [] reds;
+        delete [] greens;
+        delete [] blues;
         return Color(median_red, median_green, median_blue);
     }
 
