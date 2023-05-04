@@ -222,7 +222,7 @@ namespace prog {
         sort(values, values + n);
         if (n % 2 == 1)
             return values[n / 2];
-        return ((int)values[n / 2 - 1] + (int)values[n / 2]) / 2;
+        return (values[n / 2 - 1] + values[n / 2]) / 2;
     }
 
     /**
