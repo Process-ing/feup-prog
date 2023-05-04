@@ -245,10 +245,9 @@ namespace prog {
             *greens = new rgb_value[arr_size],
             *blues = new rgb_value[arr_size];
 
-        Color color;
         for (int nx = xmin, i = 0; nx <= xmax; nx++) {
             for (int ny = ymin; ny <= ymax; ny++, i++) {
-                color = image->at(nx, ny);
+                Color color = image->at(nx, ny);
                 reds[i] = color.red();
                 greens[i] = color.green();
                 blues[i] = color.blue();
