@@ -49,6 +49,10 @@ namespace prog {
                 continue;
             } 
             // TODO ...
+            if (command =="to_gray_scale"){
+                to_gray_scale();
+                continue;
+            }
 
         }
     }
@@ -73,4 +77,25 @@ namespace prog {
         input >> filename;
         saveToPNG(filename, image);
     }
+
+    void Script::to_gray_scale() {
+
+        int r,g,b;
+        int v;
+
+        for (int x = 0; x < image->width(); x++) {
+            for (int y = 0; y < image->height(); y++) {
+                r = (image->at(x,y)).red();
+                g = (image->at(x,y)).green();
+                b = (image->at(x,y)).blue();
+                
+                
+                v = (r + g + b)/3;
+
+                image->at(x,y) = Color(v, v, v);
+
+             }
+         }
+     }
+
 }

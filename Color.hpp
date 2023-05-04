@@ -23,7 +23,7 @@ namespace prog
       Color();
 
       /**
-       * @brief Construct a color by copyin.
+       * @brief Construct a color by copying.
        * 
        * @param c Color to copy
        */
