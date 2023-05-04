@@ -24,6 +24,7 @@ namespace prog
     void open();
     void blank();
     void save();
+
     /**
      * @brief Implements to_gray_scale command
      * @details Transforms each individual pixel (r, g, b) to (v, v, v) where v = (r + g + b)/3
@@ -31,6 +32,21 @@ namespace prog
      * 
      */
     void to_gray_scale();
+
+    /**
+     * @brief Implements "h_mirror" command.
+     * @details The command "h_mirror" mirrors the image horizontally.
+     * @author Bruno Oliveira
+     */
+    void h_mirror();
+
+    /**
+     * @brief Implements "v_mirror" command.
+     * @details The command "v_mirror" mirrors the image vertically.
+     * @author Bruno Oliveira
+     */
+    void v_mirror();
+
   };
 }
 #endif

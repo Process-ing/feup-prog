@@ -48,12 +48,20 @@ namespace prog {
                 save();
                 continue;
             } 
-            // TODO ...
+
             if (command =="to_gray_scale"){
                 to_gray_scale();
+
+            if (command == "h_mirror") {
+                h_mirror();
+
                 continue;
             }
 
+            if (command == "v_mirror") {
+                v_mirror();
+                continue;
+            }
         }
     }
     void Script::open() {
@@ -98,4 +106,23 @@ namespace prog {
          }
      }
 
+    void Script::h_mirror() {
+        for (int x = 0; x < image->width() / 2; x++) {
+            for (int y = 0; y < image->height(); y++) {
+                Color temp = image->at(x, y);
+                image->at(x, y) = image->at(image->width() - 1 - x, y);
+                image->at(image->width() - 1 - x, y) = temp;
+            }
+        }
+    }
+
+    void Script::v_mirror() {
+        for (int x = 0; x < image->width(); x++) {
+            for (int y = 0; y < image->height() / 2; y++) {
+                Color temp = image->at(x, y);
+                image->at(x, y) = image->at(x, image->height()- 1 - y);
+                image->at(x, image->height() - 1 - y) = temp;
+            }
+        }
+    }
 }
