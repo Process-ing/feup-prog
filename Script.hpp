@@ -82,6 +82,14 @@ namespace prog
     void rotate_right();
 
     /**
+     * @brief Implements "median_filter" command.
+     * @details The command "median_filter ws" applies a median filter with
+     *          window size ws >= 3 to the current image.
+     * @author Bruno Oliveira
+     */
+    void median_filter();
+
+    /**
      * @brief Implements "xpm2_open" command.
      * @details The command "xpm2_open filename" reads an image stored in the
      *          XPM2 file with name filename.

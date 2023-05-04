@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <algorithm>
+#include <cmath>
 #include "Script.hpp"
 #include "PNG.hpp"
 #include "XPM2.hpp"
@@ -74,6 +76,10 @@ namespace prog {
             }
             if (command == "rotate_right") {
                 rotate_right();
+                continue;
+            }
+            if (command == "median_filter") {
+                median_filter();
                 continue;
             }
             if (command == "xpm2_open") {
@@ -195,6 +201,71 @@ namespace prog {
             for (int y = 0; y < h; y++){
                 new_image->at(h - 1 - y, x) = image->at(x, y);
             }
+        }
+
+        clear_image_if_any();
+        image = new_image;
+    }
+    
+    /**
+     * @brief Sorts a vector of rgb_value's and returns the median.
+     * @author Bruno Oliveira
+     * 
+     * @param values Rgb_value array
+     * @return Median
+     */
+    rgb_value median_sort(vector<rgb_value>& values) {
+        size_t size = values.size();
+        if (size == 0)
+            return 0;
+
+        sort(values.begin(), values.end());
+        if (size % 2 == 1)
+            return values[size / 2];
+        return ((int)values[size / 2 - 1] + (int)values[size / 2]) / 2;
+    }
+
+    /**
+     * @brief Calculates the "median" color of the neighboring pixels of pixel
+     *        (x, y) inside a ws * ws window.
+     * @author Bruno Oliveira
+     * 
+     * @param image Image
+     * @param x Coordinate x of the pixel
+     * @param y Coordinate y of the pixel
+     * @param ws Window size
+     * @return The color with each component being the respective median in
+     *         the window's colors
+     */
+    Color square_median(Image* image, int x, int y, int ws) {
+        int xmin = max(x - ws / 2, 0), xmax = min(x + ws / 2, image->width() - 1),
+            ymin = max(y - ws / 2, 0), ymax = min(y + ws / 2, image->height() - 1);
+        vector<rgb_value> reds, greens, blues;
+
+        Color color;
+        for (int nx = xmin; nx <= xmax; nx++) {
+            for (int ny = ymin; ny <= ymax; ny++) {
+                color = image->at(nx, ny);
+                reds.push_back(color.red());
+                greens.push_back(color.green());
+                blues.push_back(color.blue());
+            }
+        }
+
+        rgb_value median_red = median_sort(reds),
+            median_green = median_sort(greens),
+            median_blue = median_sort(blues);
+        return Color(median_red, median_green, median_blue);
+    }
+
+    void Script::median_filter() {
+        int ws;
+        input >> ws;
+        Image* new_image = new Image(image->width(), image->height());
+
+        for (int x = 0; x < image->width(); x++) {
+            for (int y = 0; y < image->height(); y++)
+                new_image->at(x, y) = square_median(image, x, y, ws);
         }
 
         clear_image_if_any();
