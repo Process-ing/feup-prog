@@ -48,6 +48,11 @@ namespace prog {
                 save();
                 continue;
             } 
+            if (command == "replace") {
+                replace();
+                continue;
+            }
+
             if (command == "h_mirror") {
                 h_mirror();
                 continue;
@@ -59,6 +64,7 @@ namespace prog {
             }
         }
     }
+
     void Script::open() {
         // Replace current image (if any) with image read from PNG file.
         clear_image_if_any();
@@ -66,6 +72,7 @@ namespace prog {
         input >> filename;
         image = loadFromPNG(filename);
     }
+
     void Script::blank() {
         // Replace current image (if any) with blank image.
         clear_image_if_any();
@@ -74,11 +81,25 @@ namespace prog {
         input >> w >> h >> fill;
         image = new Image(w, h, fill);
     }
+
     void Script::save() {
         // Save current image to PNG file.
         string filename;
         input >> filename;
         saveToPNG(filename, image);
+    }
+
+    void Script::replace() {
+        int r1, g1, b1, r2, g2, b2;
+        input >> r1 >> g1 >> b1 >> r2 >> g2 >> b2;
+        Color c1(r1, g1, b1), c2(r2, g2, b2);
+
+        for (int x = 0; x < image->width(); x++) {
+            for (int y = 0; y < image->height(); y++) {
+                if (image->at(x, y) == c1)
+                    image->at(x, y) = c2;
+            }
+        }
     }
 
     void Script::h_mirror() {
