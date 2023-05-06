@@ -52,14 +52,16 @@ namespace prog {
                 replace();
                 continue;
             }
-
             if (command == "h_mirror") {
                 h_mirror();
                 continue;
             }
-
             if (command == "v_mirror") {
                 v_mirror();
+                continue;
+            }
+            if (command == "crop") {
+                crop();
                 continue;
             }
         }
@@ -120,5 +122,19 @@ namespace prog {
                 image->at(x, image->height() - 1 - y) = temp;
             }
         }
+    }
+
+    void Script::crop() {
+        int x, y, w, h;
+        input >> x >> y >> w >> h;
+        Image* new_image = new Image(w, h);
+
+        for (int nx = 0; nx < w; nx++) {
+            for (int ny = 0; ny < h; ny++)
+                new_image->at(nx, ny) = image->at(x + nx, y + ny);
+        }
+
+        clear_image_if_any();
+        image = new_image;
     }
 }
