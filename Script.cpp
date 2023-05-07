@@ -52,18 +52,26 @@ namespace prog {
             if (command =="to_gray_scale"){
                 to_gray_scale();
 
+            if (command == "replace") {
+                replace();
+                continue;
+            }
             if (command == "h_mirror") {
                 h_mirror();
 
                 continue;
             }
-
             if (command == "v_mirror") {
                 v_mirror();
                 continue;
             }
+            if (command == "crop") {
+                crop();
+                continue;
+            }
         }
     }
+
     void Script::open() {
         // Replace current image (if any) with image read from PNG file.
         clear_image_if_any();
@@ -71,6 +79,7 @@ namespace prog {
         input >> filename;
         image = loadFromPNG(filename);
     }
+
     void Script::blank() {
         // Replace current image (if any) with blank image.
         clear_image_if_any();
@@ -79,6 +88,7 @@ namespace prog {
         input >> w >> h >> fill;
         image = new Image(w, h, fill);
     }
+
     void Script::save() {
         // Save current image to PNG file.
         string filename;
@@ -105,6 +115,19 @@ namespace prog {
              }
          }
      }
+     
+    void Script::replace() {
+        int r1, g1, b1, r2, g2, b2;
+        input >> r1 >> g1 >> b1 >> r2 >> g2 >> b2;
+        Color c1(r1, g1, b1), c2(r2, g2, b2);
+
+        for (int x = 0; x < image->width(); x++) {
+            for (int y = 0; y < image->height(); y++) {
+                if (image->at(x, y) == c1)
+                    image->at(x, y) = c2;
+            }
+        }
+    }
 
     void Script::h_mirror() {
         for (int x = 0; x < image->width() / 2; x++) {
@@ -124,5 +147,19 @@ namespace prog {
                 image->at(x, image->height() - 1 - y) = temp;
             }
         }
+    }
+
+    void Script::crop() {
+        int x, y, w, h;
+        input >> x >> y >> w >> h;
+        Image* new_image = new Image(w, h);
+
+        for (int nx = 0; nx < w; nx++) {
+            for (int ny = 0; ny < h; ny++)
+                new_image->at(nx, ny) = image->at(x + nx, y + ny);
+        }
+
+        clear_image_if_any();
+        image = new_image;
     }
 }

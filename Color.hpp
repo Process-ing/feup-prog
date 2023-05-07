@@ -44,6 +44,15 @@ namespace prog
       rgb_value& green();
       rgb_value blue() const;
       rgb_value& blue();
+
+      /**
+       * @brief Operator '=='.
+       * 
+       * @param other Color to compare.
+       * 
+       * @return Whether all RGB values match those of other.
+       */
+      bool operator==(const Color& other) const;
   };
 }
 #endif

@@ -33,6 +33,13 @@ namespace prog
      */
     void to_gray_scale();
 
+     * @brief Implements "replace" command.
+     * @details The command "replace r1 g1 b1 r2 g2 b2" replaces all
+     *          (r1, g1, b1) pixels by (r2, g2, b2).
+     * @author Bruno Oliveira
+     */
+    void replace();
+
     /**
      * @brief Implements "h_mirror" command.
      * @details The command "h_mirror" mirrors the image horizontally.
@@ -46,6 +53,14 @@ namespace prog
      * @author Bruno Oliveira
      */
     void v_mirror();
+
+    /**
+     * @brief Implements "crop" command.
+     * @details The command "crop x y w h" crops the image to the rectangle
+     *          defined by top-left corner (x, y), width w and height h.
+     * @author Bruno Oliveira
+     */
+    void crop();
 
   };
 }
