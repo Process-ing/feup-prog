@@ -7,6 +7,7 @@
 namespace prog {
     /**
      * @brief Reads an image stored in the XPM2 file format.
+     * @author Bruno Oliveira & João Mendes
      * 
      * @param file Name of the file
      * @return Pointer to respective dinamically allocated Image

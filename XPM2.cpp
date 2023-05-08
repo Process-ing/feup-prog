@@ -8,6 +8,7 @@ using namespace std;
 namespace prog {
     /**
      * @brief Converts a hex value to the corresponding color.
+     * @author Bruno Oliveira & João Mendes
      * 
      * @param hex String with hexadecimal value of the color, in the format
      *            #xxxxxx
