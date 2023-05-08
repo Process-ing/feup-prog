@@ -76,6 +76,10 @@ namespace prog {
                 rotate_right();
                 continue;
             }
+            if (command == "xpm2_open") {
+                xpm2_open();
+                continue;
+            }
         }
     }
 
@@ -102,7 +106,6 @@ namespace prog {
         input >> filename;
         saveToPNG(filename, image);
     }
-
     void Script::to_gray_scale() {
         int r, g, b;
         int v;
@@ -196,5 +199,11 @@ namespace prog {
 
         clear_image_if_any();
         image = new_image;
+    }
+
+    void Script::xpm2_open() {
+        string filename;
+        input >> filename;
+        image = loadFromXPM2(filename);
     }
 }
