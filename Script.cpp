@@ -202,6 +202,7 @@ namespace prog {
     }
 
     void Script::xpm2_open() {
+        clear_image_if_any();
         string filename;
         input >> filename;
         image = loadFromXPM2(filename);
