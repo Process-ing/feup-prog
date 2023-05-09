@@ -26,6 +26,14 @@ namespace prog
     void save();
 
     /**
+     * @brief Implements to_gray_scale command
+     * @details Transforms each individual pixel (r, g, b) to (v, v, v) where v = (r + g + b)/3
+     * @author Joana Noites
+     * 
+     */
+    void to_gray_scale();
+
+    /**
      * @brief Implements "replace" command.
      * @details The command "replace r1 g1 b1 r2 g2 b2" replaces all
      *          (r1, g1, b1) pixels by (r2, g2, b2).
