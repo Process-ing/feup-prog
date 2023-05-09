@@ -61,7 +61,6 @@ namespace prog
      * @author Bruno Oliveira
      */
     void crop();
-
   };
 }
 #endif
