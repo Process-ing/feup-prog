@@ -107,9 +107,9 @@ namespace prog {
                 
                 v = (r + g + b) / 3;
                 image->at(x, y) = Color(v, v, v);
-             }
-         }
-     }
+            }
+        }
+    }
      
     void Script::replace() {
         int r1, g1, b1, r2, g2, b2;
