@@ -25,6 +25,9 @@ namespace prog
     void blank();
     void save();
 
+    
+    void invert();
+
     /**
      * @brief Implements to_gray_scale command
      * @details Transforms each individual pixel (r, g, b) to (v, v, v) where v = (r + g + b)/3

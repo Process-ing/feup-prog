@@ -78,6 +78,11 @@ namespace prog {
                 crop();
                 continue;
             }
+            if (command == "invert") {
+                invert();
+                continue;
+            }
+
             if (command == "rotate_left") {
                 rotate_left();
                 continue;
@@ -124,6 +129,17 @@ namespace prog {
         input >> filename;
         saveToPNG(filename, image);
     }
+    
+    void Script::invert() {
+        for (int x = 0; x < image->width(); x++) {
+            for (int y = 0; y < image->height(); y++) {
+                image->at(x, y).red() = 255 - image->at(x, y).red();
+                image->at(x, y).green() = 255 - image->at(x, y).green();
+                image->at(x, y).blue() = 255 - image->at(x, y).blue();
+            }
+        }
+    }
+
     void Script::to_gray_scale() {
         int r, g, b;
         int v;
