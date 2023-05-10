@@ -155,13 +155,11 @@ namespace prog {
         for (int x = 0; x < w; x++){
             for (int y = 0; y < h; y++){
                 new_image->at(y, w - 1 - x) = image->at(x, y);
-
             }
         }
 
         clear_image_if_any();
         image = new_image;
-        
     }
 
     void Script::rotate_right() {
@@ -173,13 +171,10 @@ namespace prog {
         for (int x = 0; x < w; x++){
             for (int y = 0; y < h; y++){
                 new_image->at(h - 1 - y, x) = image->at(x, y);
-
             }
         }
 
         clear_image_if_any();
         image = new_image;
-
     }
-    
 }
