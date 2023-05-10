@@ -62,6 +62,24 @@ namespace prog
      * @author Bruno Oliveira
      */
     void crop();
+
+    /**
+     * @brief Implements "rotate_left" command.
+     * @details The command "rotate_left" rotates the image to the left by
+     *          90 degrees.
+     * @author Joana Noites
+     * 
+     */
+    void rotate_left();
+
+    /**
+     * @brief Implements "rotate_right" command.
+     * @details The command "rotate_right" rotates the image to the right by
+     *          90 degrees.
+     * @author Joana Noites
+     * 
+     */
+    void rotate_right();
   };
 }
 #endif
