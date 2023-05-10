@@ -72,7 +72,6 @@ namespace prog {
                 rotate_right();
                 continue;
             }
-
         }
     }
 
