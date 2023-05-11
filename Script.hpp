@@ -29,7 +29,6 @@ namespace prog
      * @brief Implements to_gray_scale command
      * @details Transforms each individual pixel (r, g, b) to (v, v, v) where v = (r + g + b)/3
      * @author Joana Noites
-     * 
      */
     void to_gray_scale();
 
@@ -68,7 +67,6 @@ namespace prog
      * @details The command "rotate_left" rotates the image to the left by
      *          90 degrees.
      * @author Joana Noites
-     * 
      */
     void rotate_left();
 
@@ -88,6 +86,14 @@ namespace prog
      * @author Bruno Oliveira & João Mendes
      */
     void xpm2_open();
+
+    /**
+     * @brief Implements "xpm2_save" command.
+     * @details The command "xpm2_save filename" saves an image to a XPM2 file
+     *          with name filename.
+     * @author Bruno Oliveira & Joana Noites
+     */
+    void xpm2_save();
   };
 }
 #endif
