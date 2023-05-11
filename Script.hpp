@@ -80,6 +80,14 @@ namespace prog
      * 
      */
     void rotate_right();
+
+    /**
+     * @brief Implements "xpm2_open" command.
+     * @details The command "xpm2_open filename" reads an image stored in the
+     *          XPM2 file with name filename.
+     * @author Bruno Oliveira & João Mendes
+     */
+    void xpm2_open();
   };
 }
 #endif
