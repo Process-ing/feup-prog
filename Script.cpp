@@ -133,9 +133,12 @@ namespace prog {
     void Script::invert() {
         for (int x = 0; x < image->width(); x++) {
             for (int y = 0; y < image->height(); y++) {
-                image->at(x, y).red() = 255 - image->at(x, y).red();
-                image->at(x, y).green() = 255 - image->at(x, y).green();
-                image->at(x, y).blue() = 255 - image->at(x, y).blue();
+                Color color = image->at(x, y);
+                image->at(x, y) = Color(
+                    255 - color.red(),
+                    255 - color.green(),
+                    255 - color.blue()
+                );
             }
         }
     }
