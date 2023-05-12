@@ -58,6 +58,10 @@ namespace prog {
                 replace();
                 continue;
             }
+            if (command == "fill") {
+                fill();
+                continue;
+            }
             if (command == "h_mirror") {
                 h_mirror();
                 continue;
@@ -146,6 +150,16 @@ namespace prog {
                 if (image->at(x, y) == c1)
                     image->at(x, y) = c2;
             }
+        }
+    }
+
+    void Script::fill() {
+        int x, y, w, h; 
+        Color filler;
+        input >> x >> y >> w >> h >> filler;
+        for (int i = x; i < x + w; i++) {
+            for (int j = y; j < y + h; j++)
+                image->at(i, j) = filler;
         }
     }
 

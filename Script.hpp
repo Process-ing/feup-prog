@@ -41,6 +41,13 @@ namespace prog
     void replace();
 
     /**
+     * @brief Implements "fill" command.
+     * @details substitutes every color in given rectangle with a filler.
+     * @author João Mendes
+     */
+    void fill();
+
+    /**
      * @brief Implements "h_mirror" command.
      * @details The command "h_mirror" mirrors the image horizontally.
      * @author Bruno Oliveira
@@ -88,6 +95,7 @@ namespace prog
      * 
      */
     void rotate_right();
+
 
     /**
      * @brief Implements "median_filter" command.
