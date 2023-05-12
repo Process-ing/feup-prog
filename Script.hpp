@@ -56,6 +56,16 @@ namespace prog
     void v_mirror();
 
     /**
+     * @brief Implements "add" command.
+     * @details The command "add filename r g b x y" copies all pixels from
+     *          image given in PNG file "filename" (except the ones with
+     *          "neutral" color) and places that image in top-left corner (x, y)
+     *          of current image.
+     * @authors Joana Noites & João Mendes
+     */
+    void add();
+
+    /**
      * @brief Implements "crop" command.
      * @details The command "crop x y w h" crops the image to the rectangle
      *          defined by top-left corner (x, y), width w and height h.
