@@ -58,9 +58,9 @@ namespace prog
     /**
      * @brief Implements "add" command.
      * @details The command "add filename r g b x y" copies all pixels from
-     *          image given in PNG file "filename" (except the ones with
-     *          "neutral" color) and places that image in top-left corner (x, y)
-     *          of current image.
+     *          the image given in PNG file "filename" (except the ones with
+     *          "neutral" color) to the rectangle with top-left corner (x, y)
+     *          of the current image.
      * @authors Joana Noites & João Mendes
      */
     void add();
