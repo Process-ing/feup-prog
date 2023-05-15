@@ -61,7 +61,8 @@ namespace prog {
     string Color::to_hex() const {
         ostringstream hex;
 
-        hex << '#' << setfill('0') << std::hex << setw(2) << (int)red_
+        hex << '#' << setfill('0')
+            << std::hex << setw(2) << (int)red_
             << std::hex << setw(2) << (int)green_
             << std::hex << setw(2) << (int)blue_;
 
