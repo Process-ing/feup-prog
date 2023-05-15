@@ -26,6 +26,14 @@ namespace prog
     void save();
 
     /**
+     * @brief implements "invert" command.
+     * @details The command "invert" switches every color to its inverse counterpart.
+     * @author João Mendes
+     * 
+     */
+    void invert();
+
+    /**
      * @brief Implements to_gray_scale command
      * @details Transforms each individual pixel (r, g, b) to (v, v, v) where v = (r + g + b)/3
      * @author Joana Noites
