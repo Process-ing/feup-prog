@@ -104,7 +104,6 @@ namespace prog
      * @details The command "median_filter ws" applies a median filter with
      *          window size ws >= 3 to the current image.
      * @author Bruno Oliveira
-)
      */
     void median_filter();
 
