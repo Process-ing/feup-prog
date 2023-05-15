@@ -25,7 +25,12 @@ namespace prog
     void blank();
     void save();
 
-    
+    /**
+     * @brief implements "invert" command.
+     * @details The command "invert" switches every color to its inverse counterpart.
+     * @author João Mendes
+     * 
+     */
     void invert();
 
     /**
