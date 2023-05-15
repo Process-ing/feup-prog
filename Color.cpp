@@ -54,6 +54,10 @@ namespace prog {
         return red_ == other.red_ && green_ == other.green_ && blue_ == other.blue_;
     }
 
+    bool Color::operator!=(const Color& other) const {
+        return red_ != other.red_ || green_ != other.green_ || blue_ != other.blue_;
+    }
+
     string Color::to_hex() const {
         ostringstream hex;
 

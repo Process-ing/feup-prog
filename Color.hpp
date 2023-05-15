@@ -68,6 +68,16 @@ namespace prog
       bool operator==(const Color& other) const;
 
       /**
+       * @brief Operator '!='.
+       * @author Bruno Oliveira
+       * 
+       * @param other Color to compare.
+       * 
+       * @return Whether any RGB value differs from other's respective.
+       */
+      bool operator!=(const Color& other) const;
+
+      /**
        * @brief Transforms a color into its corresponding hexidecimal representation.
        * @author Bruno Oliveira & Joana Noites
        * 
