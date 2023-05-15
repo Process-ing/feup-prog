@@ -82,7 +82,6 @@ namespace prog {
                 invert();
                 continue;
             }
-
             if (command == "rotate_left") {
                 rotate_left();
                 continue;
