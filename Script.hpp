@@ -41,6 +41,15 @@ namespace prog
     void replace();
 
     /**
+     * @brief Implements "fill" command.
+     * @details The command "fill x y w h r g b" assign the color (r, g, b) to
+     *          all pixels contained in the rectangle defined by top-left corner
+     *          (x, y), width w, and height h.
+     * @author João Mendes
+     */
+    void fill();
+
+    /**
      * @brief Implements "h_mirror" command.
      * @details The command "h_mirror" mirrors the image horizontally.
      * @author Bruno Oliveira
@@ -88,6 +97,7 @@ namespace prog
      * 
      */
     void rotate_right();
+
 
     /**
      * @brief Implements "median_filter" command.
