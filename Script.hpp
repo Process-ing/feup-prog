@@ -42,7 +42,9 @@ namespace prog
 
     /**
      * @brief Implements "fill" command.
-     * @details substitutes every color in given rectangle with a filler.
+     * @details The command "fill x y w h r g b" assign the color (r, g, b) to
+     *          all pixels contained in the rectangle defined by top-left corner
+     *          (x, y), width w, and height h.
      * @author João Mendes
      */
     void fill();
@@ -102,6 +104,7 @@ namespace prog
      * @details The command "median_filter ws" applies a median filter with
      *          window size ws >= 3 to the current image.
      * @author Bruno Oliveira
+)
      */
     void median_filter();
 
