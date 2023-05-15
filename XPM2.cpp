@@ -58,7 +58,7 @@ namespace prog {
          * @param c2 Second Color object
          * @return True if c1 < c2 by lexicographic order, false otherwise
          */
-        bool operator()(const Color& c1, const Color& c2) {
+        bool operator()(const Color& c1, const Color& c2) const {
             return (c1.red() < c2.red())
                 || (c1.red() == c2.red() && ((c1.green() < c2.green())
                 || (c1.green() == c2.green() && c1.blue() < c2.blue())));
