@@ -67,8 +67,6 @@ namespace prog
        */
       bool operator==(const Color& other) const;
 
-      bool operator<(const Color& other) const;
-
       /**
        * @brief Transforms a color into its corresponding hexidecimal representation.
        * @author Bruno Oliveira & Joana Noites

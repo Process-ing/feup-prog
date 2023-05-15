@@ -44,14 +44,36 @@ namespace prog {
     }
 
     /**
-     * @brief Creates a color map for the given image.
+     * @brief Function object type for comparison of Color objects.
+     * @note This struct is defined for the sole purpose of using Color
+     *       objects as map keys.
+     * @author Bruno Oliveira & Joana Noites
+     */
+    struct compare_colors {
+        /**
+         * @brief Compares colors c1 and c2 by lexicographic order, as two
+         *        triples (r, g, b).
+         * 
+         * @param c1 First Color object
+         * @param c2 Second Color object
+         * @return True if c1 < c2 by lexicographic order, false otherwise
+         */
+        bool operator()(const Color& c1, const Color& c2) {
+            return (c1.red() < c2.red())
+                || (c1.red() == c2.red() && ((c1.green() < c2.green())
+                || (c1.green() == c2.green() && c1.blue() < c2.blue())));
+        }
+    };
+
+    /**
+     * @brief Creates a color map Color->char for the given image.
      * 
      * @param image Pointer to image
      * @param start Character to start the color mapping
      * @return Color map
      */
-    map<Color, char> create_color_map(const Image* image, char start = 'a') {
-        map<Color, char> color_map;
+    map<Color, char, compare_colors> create_color_map(const Image* image, char start = 'a') {
+        map<Color, char, compare_colors> color_map;
         char curr_char = start;
         
         for (int x = 0; x < image->width(); x++) {
@@ -68,16 +90,15 @@ namespace prog {
     }
 
     /**
-     * @brief Inverts the keys and values of a map
+     * @brief Inverts a color map, from Color->char to char->Color.
      * 
-     * @param amap Map to invert
-     * @return Inverted map
+     * @param color_map Color map to invert
+     * @return Inverted color map
      */
-    template <typename T, typename U>
-    map<U, T> invert(const map<T, U>& amap) {
-        map<U, T> res;
-        for (const pair<const T, U>& apair: amap)
-            res.insert({ apair.second, apair.first });
+    map<char, Color> invert_color_map(const map<Color, char, compare_colors>& color_map) {
+        map<char, Color> res;
+        for (const pair<const Color, char>& color_char: color_map)
+            res.insert({ color_char.second, color_char.first });
         return res;
     }
 
@@ -85,11 +106,11 @@ namespace prog {
         ofstream file_stream(file);
         file_stream << "! XPM2\n";
 
-        map<Color, char> color_map = create_color_map(image);
+        map<Color, char, compare_colors> color_map = create_color_map(image);
         file_stream << image->width() << ' ' << image->height() << ' '
                     << color_map.size() << " 1\n";
 
-        for (pair<char, Color> char_color: invert(color_map))
+        for (pair<char, Color> char_color: invert_color_map(color_map))
             file_stream << char_color.first << " c "
                         << char_color.second.to_hex() << endl;
         
