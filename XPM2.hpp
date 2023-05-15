@@ -14,6 +14,13 @@ namespace prog {
      */
     Image* loadFromXPM2(const std::string &file);
 
+    /**
+     * @brief Saves an image in a XPM2 file.
+     * @author Bruno Oliveira & Joana Noites
+     * 
+     * @param file Name of the file
+     * @param img Pointer to image
+     */
     void saveToXPM2(const std::string& file, const Image* img);
 }
 #endif
