@@ -66,6 +66,10 @@ namespace prog {
                 v_mirror();
                 continue;
             }
+            if (command == "add"){
+                add();
+                continue;
+            }
             if (command == "crop") {
                 crop();
                 continue;
@@ -159,6 +163,28 @@ namespace prog {
                 image->at(x, image->height() - 1 - y) = temp;
             }
         }
+    }
+
+    void Script::add() {
+        string filename;
+        
+        int x, y;
+        Color neutral;
+        input >> filename >> neutral >> x >> y;
+        
+        int temp = y;
+        
+        Image* given_image = loadFromPNG(filename);
+
+        for (int x_given = 0; x_given < given_image->width(); x_given++, x++){
+            for (int y_given = 0; y_given < given_image->height(); y_given++, y++){
+                if (! (given_image->at(x_given, y_given) == neutral)){
+                    image->at(x, y) = given_image->at(x_given, y_given);
+                }
+            }
+            y = temp;
+        }
+        delete given_image;
     }
 
     void Script::crop() {
