@@ -44,12 +44,13 @@ namespace prog {
     }
 
     /**
-     * @brief Function object type for comparison of Color objects.
+     * @brief Function object type for lexicographic comparison of Color objects.
      * @note This struct is defined for the sole purpose of using Color
      *       objects as map keys.
      * @author Bruno Oliveira & Joana Noites
      */
-    struct compare_colors {
+    class SortColorLex {
+      public:
         /**
          * @brief Compares colors c1 and c2 by lexicographic order, as two
          *        triples (r, g, b).
@@ -72,8 +73,8 @@ namespace prog {
      * @param start Character to start the color mapping
      * @return Color map
      */
-    map<Color, char, compare_colors> create_color_map(const Image* image, char start = 'a') {
-        map<Color, char, compare_colors> color_map;
+    map<Color, char, SortColorLex> create_color_map(const Image* image, char start = 'a') {
+        map<Color, char, SortColorLex> color_map;
         char curr_char = start;
         
         for (int x = 0; x < image->width(); x++) {
@@ -95,7 +96,7 @@ namespace prog {
      * @param color_map Color map to invert
      * @return Inverted color map
      */
-    map<char, Color> invert_color_map(const map<Color, char, compare_colors>& color_map) {
+    map<char, Color> invert_color_map(const map<Color, char, SortColorLex>& color_map) {
         map<char, Color> res;
         for (const pair<const Color, char>& color_char: color_map)
             res.insert({ color_char.second, color_char.first });
@@ -106,7 +107,7 @@ namespace prog {
         ofstream file_stream(file);
         file_stream << "! XPM2\n";
 
-        map<Color, char, compare_colors> color_map = create_color_map(image);
+        map<Color, char, SortColorLex> color_map = create_color_map(image);
         file_stream << image->width() << ' ' << image->height() << ' '
                     << color_map.size() << " 1\n";
 
