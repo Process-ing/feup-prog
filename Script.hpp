@@ -26,16 +26,16 @@ namespace prog
     void save();
 
     /**
-     * @brief implements "invert" command.
+     * @brief Implements "invert" command.
      * @details The command "invert" switches every color to its inverse counterpart.
      * @author João Mendes
-     * 
      */
     void invert();
 
     /**
-     * @brief Implements to_gray_scale command
-     * @details Transforms each individual pixel (r, g, b) to (v, v, v) where v = (r + g + b)/3
+     * @brief Implements "to_gray_scale" command.
+     * @details Transforms each individual pixel (r, g, b) to (v, v, v), where
+     *          v = (r + g + b)/3.
      * @author Joana Noites
      */
     void to_gray_scale();
@@ -52,7 +52,7 @@ namespace prog
      * @brief Implements "fill" command.
      * @details The command "fill x y w h r g b" assign the color (r, g, b) to
      *          all pixels contained in the rectangle defined by top-left corner
-     *          (x, y), width w, and height h.
+     *          (x, y), width w and height h.
      * @author João Mendes
      */
     void fill();
@@ -75,8 +75,8 @@ namespace prog
      * @brief Implements "add" command.
      * @details The command "add filename r g b x y" copies all pixels from
      *          the image given in PNG file "filename" (except the ones with
-     *          "neutral" color) to the rectangle with top-left corner (x, y)
-     *          of the current image.
+     *          "neutral" color (r, g, b)) to the rectangle with top-left
+     *          corner (x, y) of the current image.
      * @authors Joana Noites & João Mendes
      */
     void add();
@@ -102,10 +102,8 @@ namespace prog
      * @details The command "rotate_right" rotates the image to the right by
      *          90 degrees.
      * @author Joana Noites
-     * 
      */
     void rotate_right();
-
 
     /**
      * @brief Implements "median_filter" command.

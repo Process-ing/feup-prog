@@ -7,7 +7,6 @@ namespace prog
 {
   /**
    * @brief 2D grid that represents an image using vectors that hold RGB color values.
-   * @author João Mendes
    */
   class Image
   {
@@ -18,34 +17,37 @@ namespace prog
 
   public:
     /**
-     * @brief Construct a new Image object with the given width and height
+     * @brief Construct a new Image object with the given width w and height h
      *        and filled with color fill.
+     * @author João Mendes
      * 
-     * @param w Width.
-     * @param h Height.
-     * @param fill Fill color.
+     * @param w Width
+     * @param h Height
+     * @param fill Fill color
      */
-    Image(int w, int h, const Color &fill = {255, 255, 255});
+    Image(int w, int h, const Color &fill = { 255, 255, 255 });
 
     ~Image();
     int width() const;
     int height() const;
 
     /**
-     * @brief Mutable function that returns the color at (x, y).
+     * @brief Returns a mutable reference to the color in pixel (x, y).
+     * @author João Mendes
      * 
-     * @param x 
-     * @param y 
-     * @return Color& Reference to the color at (x, y).
+     * @param x Coordinate x
+     * @param y Coordinate y
+     * @return Mutable reference to the color.
      */
     Color &at(int x, int y);
 
     /**
-     * @brief Constant function that returns the color at (x, y).
+     * @brief Returns a constant reference to the color in pixel (x, y).
+     * @author João Mendes
      * 
-     * @param x 
-     * @param y 
-     * @return const Color& Color at (x, y).
+     * @param x Coordinate x
+     * @param y Coordinate y
+     * @return Constant reference to the color.
      */
     const Color &at(int x, int y) const;
   };

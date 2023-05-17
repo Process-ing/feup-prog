@@ -24,22 +24,23 @@ namespace prog
       Color();
 
       /**
-       * @brief Constructs a color by copying.
+       * @brief Constructs a color by copy.
        * @author Joana Noites
        * 
        * @param c Color to copy
        */
-      Color(const Color& c);
+      Color(const Color& other);
 
       /**
-       * @brief Constructs a new Color object with provided parameters r, g and b.
+       * @brief Constructs a new Color object with provided rgb values red,
+       *        green and blue.
        * @author Joana Noites
        * 
-       * @param r Red
-       * @param g Green
-       * @param b Blue
+       * @param red Red value
+       * @param green Green value
+       * @param blue Blue value
        */
-      Color(rgb_value r, rgb_value g, rgb_value b);
+      Color(rgb_value red, rgb_value green, rgb_value blue);
 
       /**
      * @brief Constructs a Color object with its hexadecimal representation.
@@ -67,7 +68,15 @@ namespace prog
        */
       bool operator==(const Color& other) const;
 
-      bool operator<(const Color& other) const;
+      /**
+       * @brief Operator '!='.
+       * @author Bruno Oliveira
+       * 
+       * @param other Color to compare.
+       * 
+       * @return Whether any RGB value differs from other's respective.
+       */
+      bool operator!=(const Color& other) const;
 
       /**
        * @brief Transforms a color into its corresponding hexidecimal representation.

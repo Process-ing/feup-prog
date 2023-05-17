@@ -50,6 +50,10 @@ namespace prog {
                 save();
                 continue;
             } 
+            if (command == "invert") {
+                invert();
+                continue;
+            }
             if (command == "to_gray_scale") {
                 to_gray_scale();
                 continue;
@@ -76,10 +80,6 @@ namespace prog {
             }
             if (command == "crop") {
                 crop();
-                continue;
-            }
-            if (command == "invert") {
-                invert();
                 continue;
             }
             if (command == "rotate_left") {
@@ -159,9 +159,8 @@ namespace prog {
     }
      
     void Script::replace() {
-        int r1, g1, b1, r2, g2, b2;
-        input >> r1 >> g1 >> b1 >> r2 >> g2 >> b2;
-        Color c1(r1, g1, b1), c2(r2, g2, b2);
+        Color c1, c2;
+        input >> c1 >> c2;
 
         for (int x = 0; x < image->width(); x++) {
             for (int y = 0; y < image->height(); y++) {
@@ -203,18 +202,16 @@ namespace prog {
 
     void Script::add() {
         string filename;
-        
         int x, y;
         Color neutral;
         input >> filename >> neutral >> x >> y;
         
         int temp = y;
-        
         Image* given_image = loadFromPNG(filename);
 
-        for (int x_given = 0; x_given < given_image->width(); x_given++, x++){
-            for (int y_given = 0; y_given < given_image->height(); y_given++, y++){
-                if (! (given_image->at(x_given, y_given) == neutral)){
+        for (int x_given = 0; x_given < given_image->width(); x_given++, x++) {
+            for (int y_given = 0; y_given < given_image->height(); y_given++, y++) {
+                if (given_image->at(x_given, y_given) != neutral){
                     image->at(x, y) = given_image->at(x_given, y_given);
                 }
             }
@@ -243,10 +240,9 @@ namespace prog {
         h = image->height();
         Image* new_image = new Image(h, w);
 
-        for (int x = 0; x < w; x++){
-            for (int y = 0; y < h; y++){
+        for (int x = 0; x < w; x++) {
+            for (int y = 0; y < h; y++)
                 new_image->at(y, w - 1 - x) = image->at(x, y);
-            }
         }
 
         clear_image_if_any();
@@ -259,10 +255,9 @@ namespace prog {
         h = image->height();
         Image* new_image = new Image(h, w);
 
-        for (int x = 0; x < w; x++){
-            for (int y = 0; y < h; y++){
+        for (int x = 0; x < w; x++) {
+            for (int y = 0; y < h; y++)
                 new_image->at(h - 1 - y, x) = image->at(x, y);
-            }
         }
 
         clear_image_if_any();
