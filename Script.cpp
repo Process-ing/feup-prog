@@ -265,20 +265,23 @@ namespace prog {
     }
     
     /**
-     * @brief Sorts a rgb_value array and returns the median.
+     * @brief Partially sorts a rgb_value array (like std::nth_element) and
+     *        returns the median.
      * @author Bruno Oliveira
      * 
      * @param values Rgb_value array
      * @param n Size of array
      * @return Median
      */
-    rgb_value median_sort(rgb_value values[], size_t n) {
+    rgb_value partial_median_sort(rgb_value values[], size_t n) {
         if (n == 0)
             return 0;
 
-        sort(values, values + n);
-        if (n % 2 == 1)
+        nth_element(values, values + n / 2, values + n);
+        if (n % 2 == 1) {
             return values[n / 2];
+        }
+        nth_element(values, values + n / 2 - 1, values + n / 2);
         return (values[n / 2 - 1] + values[n / 2]) / 2;
     }
 
@@ -311,9 +314,9 @@ namespace prog {
             }
         }
 
-        rgb_value median_red = median_sort(reds, arr_size),
-            median_green = median_sort(greens, arr_size),
-            median_blue = median_sort(blues, arr_size);
+        rgb_value median_red = partial_median_sort(reds, arr_size),
+            median_green = partial_median_sort(greens, arr_size),
+            median_blue = partial_median_sort(blues, arr_size);
         delete [] reds;
         delete [] greens;
         delete [] blues;
